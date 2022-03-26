@@ -57,10 +57,10 @@ public class StudentCard extends UiPart<Region> {
         this.student = student;
         id.setText(displayedIndex + ". ");
         name.setText(student.getName().fullName);
-        email.setText("email: " + student.getEmail().value);
-        github.setText("github: " + student.getGithubUsername().username);
-        telegram.setText("telegram: " + student.getTelegram().handle);
-        studentId.setText("studentid: " + student.getStudentId().id);
+        email.setText(student.getEmail().value);
+        github.setText(student.getGithubUsername().username);
+        telegram.setText(student.getTelegram().handle);
+        studentId.setText(student.getStudentId().id);
         student.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));

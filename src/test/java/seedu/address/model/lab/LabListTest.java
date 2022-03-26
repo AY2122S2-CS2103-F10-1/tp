@@ -39,12 +39,13 @@ class LabListTest {
 
     @Test
     public void contains_listEmpty_failure() {
-        assertTrue(labs.isEmpty());
+        LabList labs = new LabList();
         assertFalse(labs.contains(new Lab("2")));
     }
 
     @Test
     public void getLab_labInList_success() {
+        LabList labs = new LabList();
         Lab l = new Lab("1");
         labs.add(l);
         assertEquals(l, labs.getLab(l));
@@ -60,7 +61,6 @@ class LabListTest {
 
     @Test
     public void getLab_listEmpty_throwsLabNotFoundException() {
-        assertTrue(labs.isEmpty());
         assertThrows(LabNotFoundException.class, () -> labs.getLab(new Lab("2")));
         assertThrows(LabNotFoundException.class, () -> labs.getLab(2));
     }
@@ -200,16 +200,5 @@ class LabListTest {
         labs1.setLabs(labList);
         labs2.add(new Lab("1"));
         assertFalse(labs1.equals(labs2));
-    }
-
-    @Test
-    public void isEmpty_emptyList_success() {
-        assertTrue(labs.isEmpty());
-    }
-
-    @Test
-    public void isEmpty_nonEmptyList_success() {
-        labs.add(new Lab("1"));
-        assertFalse(labs.isEmpty());
     }
 }
